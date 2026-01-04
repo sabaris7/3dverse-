@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - 3dverse Collaborate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #2E2CF6;
+            --color-primary-dark: #201ec0;
+            --color-accent: #C7F000;
+            --color-text: #0B0D17;
+            --color-text-light: #6B7280;
+            --color-bg: #F7F8FA;
+            --color-surface: #FFFFFF;
+            --color-border: #E5E7EB;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--color-primary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background-color: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            color: var(--color-text-light);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* Sidebar Nav */
+        .sidebar-nav {
+            position: sticky;
+            top: 6rem;
+            background: var(--color-surface);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: var(--color-text-light);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background-color: var(--color-bg);
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        /* Sections */
+        section {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            scroll-margin-top: 6rem;
+        }
+
+        section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        section h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        section p {
+            margin-bottom: 1rem;
+            color: var(--color-text-light);
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--color-bg);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-border);
+        }
+
+        .feature-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Shortcuts Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+        }
+
+        kbd {
+            display: inline-block;
+            padding: 0.2em 0.4em;
+            font-family: monospace;
+            font-size: 0.85em;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        }
+
+        /* Code Block */
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+        }
+
+        /* Alerts */
+        .alert {
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .alert-info {
+            background-color: #EFF6FF;
+            border: 1px solid #BFDBFE;
+            color: #1E40AF;
+        }
+
+        .alert-warning {
+            background-color: #FFFBEB;
+            border: 1px solid #FDE68A;
+            color: #92400E;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            padding: 3rem 0;
+            margin-top: 3rem;
+            text-align: center;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-nav {
+                display: none;
+            }
+            .header-content {
+                height: auto;
+                padding: 1rem 0;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+                3dverse
+            </a>
+            <nav role="navigation" aria-label="Main Navigation">
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#getting-started">Getting Started</a></li>
+                    <li><a href="#usage">Usage</a></li>
+                    <li><a href="#shortcuts">Shortcuts</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+            <a href="installation.html" class="btn btn-primary">Download / Install</a>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="container">
+            <h1>Documentation & Guide</h1>
+            <p>Everything you need to know about collaborating in real-time on 3D engineering designs using 3dverse.</p>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="grid">
+            <aside class="sidebar-nav">
+                <nav>
+                    <ul>
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#features">Key Features</a></li>
+                        <li><a href="#getting-started">Getting Started</a></li>
+                        <li><a href="#usage">User Guide</a></li>
+                        <li><a href="#ai-assistant">AI Assistant</a></li>
+                        <li><a href="#settings">Settings & Theme</a></li>
+                        <li><a href="#permissions">Permissions</a></li>
+                        <li><a href="#shortcuts">Keyboard Shortcuts</a></li>
+                        <li><a href="#faq">Troubleshooting & FAQ</a></li>
+                        <li><a href="#changelog">Changelog</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="content">
+                <section id="introduction">
+                    <h2>Introduction</h2>
+                    <p><strong>3dverse Collaborate</strong> is a browser-based platform designed for engineering teams to review 3D CAD models in real-time. It eliminates the need for heavy desktop software installations, allowing stakeholders to view, comment, and inspect designs instantly via a web link.</p>
+                    <p>Whether you are performing a design review, client presentation, or internal audit, 3dverse keeps everyone on the same page—literally.</p>
+                </section>
+
+                <section id="features">
+                    <h2>Key Features</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4>⚡ Real-time Sync</h4>
+                            <p>See where other users are looking and pointing. Camera views and cursors are synchronized instantly.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>🎙️ Voice Chat</h4>
+                            <p>Integrated voice communication. See who is speaking and mute/unmute directly in the workspace.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>💬 3D Annotation</h4>
+                            <p>Pin comments directly onto the 3D model surface. Organize discussions by threads and resolve issues.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>🤖 AI Assistant</h4>
+                            <p>Powered by Gemini. Summarize comments, critique views, and ask technical questions about the assembly.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>🛠️ Inspection Tools</h4>
+                            <p>Explode views, measure distances, toggle wireframes, and cut sections to see internal details.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>🌗 Dark Mode</h4>
+                            <p>A professional dark theme for low-light environments, automatically syncing the 3D viewport.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="getting-started">
+                    <h2>Getting Started</h2>
+                    <h3>1. Creating a Project</h3>
+                    <p>To start, click the <strong>New Project</strong> button on the dashboard. You will be prompted to:</p>
+                    <ul>
+                        <li>Enter a project name.</li>
+                        <li>Upload a 3D file. Supported formats: <code>.glb</code>, <code>.gltf</code>, <code>.obj</code>, <code>.fbx</code>.</li>
+                    </ul>
+                    <p><em>Note: Files are stored locally in your browser (IndexedDB) for security and speed in this version.</em></p>
+
+                    <h3>2. Sharing</h3>
+                    <p>Once inside a workspace, click the <strong>Share</strong> button in the top right. You can copy the link or invite users via email mock-up.</p>
+                </section>
+
+                <section id="usage">
+                    <h2>User Guide</h2>
+                    
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><strong>Rotate:</strong> Left-click and drag.</li>
+                        <li><strong>Pan:</strong> Right-click and drag.</li>
+                        <li><strong>Zoom:</strong> Scroll wheel.</li>
+                        <li><strong>Focus:</strong> Double-click on an object to center the camera.</li>
+                    </ul>
+
+                    <h3>Presentation Mode</h3>
+                    <p>Click the <strong>Play</strong> icon in the header to start presenting. All other users in the room will have their cameras locked to your view. Click <strong>Stop Presenting</strong> to release control.</p>
+
+                    <h3>Tools</h3>
+                    <p>The floating toolbar provides several inspection utilities:</p>
+                    <ul>
+                        <li><strong>Select (Cursor):</strong> Default mode for rotating and clicking objects to comment.</li>
+                        <li><strong>Explode (Layers):</strong> Separates the assembly components for better visibility.</li>
+                        <li><strong>Measure (Ruler):</strong> Click two points on the model to calculate the straight-line distance.</li>
+                        <li><strong>Section (Scissors):</strong> Enables a clipping plane. Use the slider to move the plane up and down.</li>
+                        <li><strong>Wireframe (Box):</strong> Toggles mesh wireframe rendering.</li>
+                    </ul>
+                </section>
+
+                <section id="ai-assistant">
+                    <h2>AI Design Assistant</h2>
+                    <p>The AI Assistant (Gemini Flash) can be accessed via the <strong>Sparkles</strong> icon in the toolbar. It is context-aware:</p>
+                    <ul>
+                        <li>It knows the project status and parts list.</li>
+                        <li>It can read the current comments.</li>
+                        <li>It can "see" your current view (via screenshot capture) to analyze geometry.</li>
+                    </ul>
+                    <div class="alert alert-info">
+                        <strong>Tip:</strong> Use the "Critique View" quick action to have the AI inspect the current camera angle for design flaws.
+                    </div>
+                </section>
+
+                <section id="settings">
+                    <h2>Settings & Theme</h2>
+                    <p>Access settings from the Dashboard sidebar. You can:</p>
+                    <ul>
+                        <li>Update your profile (Name, Role, Bio).</li>
+                        <li>Manage notification preferences.</li>
+                        <li>Toggle between <strong>Light</strong> and <strong>Dark</strong> themes.</li>
+                    </ul>
+                    <p>Theme changes persist across reloads and affect the UI as well as the 3D environment lighting.</p>
+                </section>
+
+                <section id="permissions">
+                    <h2>Permissions</h2>
+                    <p>To use the voice chat features, the application requires access to your microphone.</p>
+                    <div class="alert alert-warning">
+                        When joining a workspace, your browser will prompt for permission: <strong>"3dverse wants to use your microphone."</strong> Please click Allow to enable voice features.
+                    </div>
+                    <p>If you deny permission, you can still view and comment, but you will appear as muted to others.</p>
+                </section>
+
+                <section id="shortcuts">
+                    <h2>Keyboard Shortcuts</h2>
+                    <p>Boost your productivity with these hotkeys inside the workspace:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Key</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><kbd>M</kbd></td>
+                                <td>Toggle Measurement Tool</td>
+                            </tr>
+                            <tr>
+                                <td><kbd>X</kbd></td>
+                                <td>Toggle Explode View</td>
+                            </tr>
+                            <tr>
+                                <td><kbd>W</kbd></td>
+                                <td>Toggle Wireframe Mode</td>
+                            </tr>
+                            <tr>
+                                <td><kbd>G</kbd></td>
+                                <td>Toggle Floor Grid</td>
+                            </tr>
+                            <tr>
+                                <td><kbd>?</kbd></td>
+                                <td>Show Shortcuts Help</td>
+                            </tr>
+                            <tr>
+                                <td><kbd>Esc</kbd></td>
+                                <td>Cancel Tool / Close Panels</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="faq">
+                    <h2>Troubleshooting & FAQ</h2>
+                    
+                    <h3>Why is my microphone not working?</h3>
+                    <p>Ensure you allowed browser permissions. Check the URL bar for a camera/mic icon to reset permissions. Also, verify your system's input device settings.</p>
+
+                    <h3>Supported File Sizes?</h3>
+                    <p>We recommend files under 50MB for optimal browser performance. Large textures or high-poly meshes (>500k polygons) may cause lag on lower-end devices.</p>
+
+                    <h3>Is my data secure?</h3>
+                    <p>In this version, files are stored locally in your browser's IndexedDB. Real-time events are simulated locally for demonstration. In a production deployment, data would be encrypted via WebSocket (WSS).</p>
+                </section>
+
+                <section id="changelog">
+                    <h2>Changelog</h2>
+                    <ul>
+                        <li><strong>v1.2.0 (Current)</strong> - Added Dark Mode, AI Assistant, and Keyboard Shortcuts.</li>
+                        <li><strong>v1.1.0</strong> - Added Voice Chat and Presentation Mode.</li>
+                        <li><strong>v1.0.0</strong> - Initial release with 3D Viewer and Comments.</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 3dverse Inc. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+                <a href="#" style="color: inherit; margin: 0 0.5rem;">Privacy Policy</a> • 
+                <a href="#" style="color: inherit; margin: 0 0.5rem;">Terms of Service</a> • 
+                <a href="mailto:support@3dverse.com" style="color: inherit; margin: 0 0.5rem;">Contact Support</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for sidebar active state
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

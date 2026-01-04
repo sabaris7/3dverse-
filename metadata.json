@@ -1,0 +1,7 @@
+{
+  "name": "cDone 3dverse Collaborate",
+  "description": "Real-time 3D design reviews directly in the browser with zero-install collaboration.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

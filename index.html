@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>3dverse Collaborate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                primary: '#2E2CF6',
+                secondary: '#5B5AF7',
+                accent: '#C7F000',
+              },
+              surface: {
+                app: '#F7F8FA',
+                card: '#FFFFFF',
+                secondary: '#F1F3F7',
+                dark: '#0B0D17',     // Main background in dark mode
+                darkCard: '#151926', // Card background in dark mode
+                darkSec: '#1F2937',  // Secondary background in dark mode
+              },
+              text: {
+                primary: '#0B0D17',
+                secondary: '#6B7280',
+                muted: '#9CA3AF',
+                inverse: '#F9FAFB',
+              },
+              status: {
+                positive: '#2ED573',
+                negative: '#FF4757',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #F7F8FA;
+        color: #0B0D17;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      html.dark body {
+        background-color: #0B0D17;
+        color: #F9FAFB;
+      }
+      /* Custom Scrollbar for sleek look */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #E5E7EB;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #9CA3AF;
+      }
+      html.dark ::-webkit-scrollbar-thumb {
+        background: #374151;
+      }
+      html.dark ::-webkit-scrollbar-thumb:hover {
+        background: #4B5563;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "recharts": "https://esm.sh/recharts@^3.6.0",
+    "@react-three/fiber": "https://esm.sh/@react-three/fiber@^9.5.0",
+    "three": "https://esm.sh/three@0.160.0",
+    "@react-three/drei": "https://esm.sh/@react-three/drei@^10.7.7",
+    "three/examples/jsm/loaders/OBJLoader": "https://esm.sh/three@0.160.0/examples/jsm/loaders/OBJLoader.js",
+    "three/examples/jsm/loaders/FBXLoader": "https://esm.sh/three@0.160.0/examples/jsm/loaders/FBXLoader.js",
+    "three/examples/jsm/loaders/MTLLoader": "https://esm.sh/three@0.160.0/examples/jsm/loaders/MTLLoader.js",
+    "three/": "https://esm.sh/three@^0.182.0/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

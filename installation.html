@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation - 3dverse Collaborate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #2E2CF6;
+            --color-primary-dark: #201ec0;
+            --color-accent: #C7F000;
+            --color-text: #0B0D17;
+            --color-text-light: #6B7280;
+            --color-bg: #F7F8FA;
+            --color-surface: #FFFFFF;
+            --color-border: #E5E7EB;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-text-light);
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-left: 1.5rem;
+        }
+
+        nav a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Content */
+        .hero {
+            padding: 3rem 0;
+            text-align: center;
+            background: linear-gradient(to bottom, var(--color-surface), var(--color-bg));
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .hero h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            color: var(--color-text-light);
+        }
+
+        main {
+            padding: 3rem 0;
+        }
+
+        section {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.5rem;
+            color: var(--color-text);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--color-text-light);
+        }
+
+        /* Lists */
+        ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-text-light);
+        }
+        
+        ol li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        ul.checklist {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul.checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--color-bg);
+            border-radius: var(--radius-md);
+        }
+
+        .check-icon {
+            color: var(--color-primary);
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        /* Code Blocks */
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            position: relative;
+            margin: 1rem 0 1.5rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Tabs/Platform Switcher */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .tab {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            color: var(--color-text-light);
+            font-weight: 500;
+        }
+
+        .tab.active {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-primary);
+        }
+
+        /* Alerts */
+        .alert {
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            margin: 1rem 0;
+            display: flex;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .alert-warning {
+            background-color: #FFFBEB;
+            border: 1px solid #FDE68A;
+            color: #92400E;
+        }
+        
+        .alert-info {
+            background-color: #EFF6FF;
+            border: 1px solid #BFDBFE;
+            color: #1E40AF;
+        }
+
+        /* Screenshot Placeholder */
+        .screenshot-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: #e5e7eb;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            border: 2px dashed #d1d5db;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--color-border);
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 600px) {
+            .header-content {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem 0;
+                gap: 0.5rem;
+            }
+            nav {
+                margin-top: 0.5rem;
+            }
+            nav a {
+                margin: 0 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <a href="documentation.html" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+                3dverse
+            </a>
+            <nav>
+                <a href="documentation.html">Documentation</a>
+                <a href="mailto:support@3dverse.com">Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="container">
+            <h1>Installation & Setup</h1>
+            <p>Guide for setting up the 3dverse development environment locally.</p>
+        </div>
+    </div>
+
+    <main class="container">
+
+        <!-- Prerequisites -->
+        <section id="prerequisites">
+            <h2>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                Prerequisites
+            </h2>
+            <p>Before installing, ensure your system meets the following requirements:</p>
+            <ul class="checklist">
+                <li>
+                    <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <div>
+                        <strong>Node.js (v18 or higher)</strong>
+                        <div style="font-size: 0.85rem; margin-top: 0.25rem;">Required to run the build tools and local development server.</div>
+                    </div>
+                </li>
+                <li>
+                    <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <div>
+                        <strong>Gemini API Key</strong>
+                        <div style="font-size: 0.85rem; margin-top: 0.25rem;">Required for the AI Assistant features. Get one at <a href="https://aistudio.google.com/" target="_blank" style="color: var(--color-primary);">Google AI Studio</a>.</div>
+                    </div>
+                </li>
+                <li>
+                    <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <div>
+                        <strong>Git</strong>
+                        <div style="font-size: 0.85rem; margin-top: 0.25rem;">To clone the repository and manage updates.</div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Installation Steps -->
+        <section id="install">
+            <h2>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                Developer Install (Unpacked)
+            </h2>
+            <p>Follow these steps to run the application source code on your local machine.</p>
+
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab('terminal')">Terminal (Universal)</div>
+            </div>
+
+            <div id="step-1">
+                <h3>1. Clone the Repository</h3>
+                <p>Download the source code to your local machine.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <code>git clone https://github.com/your-org/3dverse-collaborate.git
+cd 3dverse-collaborate</code>
+                </div>
+            </div>
+
+            <div id="step-2">
+                <h3>2. Install Dependencies</h3>
+                <p>Install the required packages listed in <code>package.json</code>.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <code>npm install</code>
+                </div>
+            </div>
+
+            <div id="step-3">
+                <h3>3. Configure Environment</h3>
+                <p>Create a <code>.env</code> file in the root directory to store your secrets. Do not commit this file.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <code># Create .env file
+touch .env
+
+# Add your API Key
+echo "API_KEY=your_gemini_api_key_here" >> .env</code>
+                </div>
+                <div class="alert alert-warning">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    <span><strong>Security Note:</strong> In this local demo, the API key is accessed via <code>process.env</code>. In a production build, ensure keys are handled via a backend proxy to prevent exposure.</span>
+                </div>
+            </div>
+
+            <div id="step-4">
+                <h3>4. Run Application</h3>
+                <p>Start the local development server.</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <code>npm start</code>
+                </div>
+                <p>The application should automatically open at <code>http://localhost:3000</code>.</p>
+                <div class="screenshot-placeholder">
+                    [Screenshot: Dashboard View loaded in localhost]
+                </div>
+            </div>
+        </section>
+
+        <!-- Permissions -->
+        <section id="permissions">
+            <h2>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                Security & Permissions
+            </h2>
+            <p>Upon launching the application for the first time, you will be prompted to grant the following permissions:</p>
+            
+            <div style="margin-top: 1.5rem;">
+                <h3 style="display:flex; align-items:center; gap:0.5rem; font-size:1rem;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                    Microphone Access
+                </h3>
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Required for:</p>
+                <ul style="font-size: 0.9rem; color: var(--color-text-light); margin-left: 1.5rem; margin-bottom: 1rem;">
+                    <li>Real-time voice chat with other collaborators.</li>
+                    <li>Analyzing audio levels to show "who is speaking" indicators.</li>
+                </ul>
+                <div class="alert alert-info">
+                    <span>You can revoke this permission at any time via your browser's site settings (Lock icon in URL bar).</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Troubleshooting -->
+        <section id="troubleshooting">
+            <h2>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                Troubleshooting
+            </h2>
+            <p>Common issues encountered during installation:</p>
+            
+            <h3>Port 3000 is busy</h3>
+            <p>If the default port is occupied, the start script usually prompts to use another port (e.g., 3001). You can also force a port:</p>
+            <div class="code-block">
+                <code>PORT=3001 npm start</code>
+            </div>
+
+            <h3>"Missing API Key" Error</h3>
+            <p>If the AI features (Sparkles icon) return an error or loader spins indefinitely:</p>
+            <ol>
+                <li>Verify <code>.env</code> file exists in the root.</li>
+                <li>Ensure the variable name is exactly <code>API_KEY</code>.</li>
+                <li>Restart the development server (`Ctrl+C`, then `npm start`) to load new env vars.</li>
+            </ol>
+
+            <h3>Microphone not working</h3>
+            <p>Check if your browser has blocked access globally. Go to <code>chrome://settings/content/microphone</code> to verify.</p>
+        </section>
+
+        <!-- Updating -->
+        <section id="updates">
+            <h2>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Updating & Uninstalling
+            </h2>
+            
+            <h3>Updating</h3>
+            <p>To pull the latest changes from the repository:</p>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <code>git pull origin main
+npm install</code>
+            </div>
+
+            <h3>Uninstalling</h3>
+            <p>To remove the application, simply delete the project folder:</p>
+            <div class="code-block">
+                <code>rm -rf 3dverse-collaborate</code>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 3dverse Inc. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="documentation.html" style="color: inherit; text-decoration: underline;">View User Documentation</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function copyCode(btn) {
+            const code = btn.nextElementSibling.innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = btn.innerText;
+                btn.innerText = 'Copied!';
+                btn.style.background = '#2ED573';
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = '';
+                }, 2000);
+            });
+        }
+
+        function switchTab(tabName) {
+            // For now only one tab is active/visualized in this simplified guide
+            console.log('Switched to', tabName);
+        }
+    </script>
+</body>
+</html>
